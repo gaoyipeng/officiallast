@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccid.official.dao.mapper.GwSignReportMapper" >
+  <resultMap id="BaseResultMap" type="com.ccid.official.dao.entity.po.GwSignReport" >
+    <!--          -->
+    <result column="ID" property="id" jdbcType="INTEGER" />
+    <result column="SIGN_REPORT_DATE" property="signReportDate" jdbcType="TIMESTAMP" />
+    <result column="SIGN_REPORT_NUM" property="signReportNum" jdbcType="VARCHAR" />
+    <result column="SIGN_REPORT_TITLE" property="signReportTitle" jdbcType="VARCHAR" />
+    <result column="SECRET_LEVEL" property="secretLevel" jdbcType="INTEGER" />
+    <result column="SIGNER" property="signer" jdbcType="VARCHAR" />
+    <result column="DRAFT_OFFICE" property="draftOffice" jdbcType="VARCHAR" />
+    <result column="DRAFT_MAN" property="draftMan" jdbcType="VARCHAR" />
+    <result column="SEND_OFFICE" property="sendOffice" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ccid.official.dao.entity.po.GwSignReport" >
+    <!--          -->
+    insert into GW_SIGN_REPORT (ID, SIGN_REPORT_DATE, SIGN_REPORT_NUM, 
+      SIGN_REPORT_TITLE, SECRET_LEVEL, SIGNER, 
+      DRAFT_OFFICE, DRAFT_MAN, SEND_OFFICE, 
+      STATE)
+    values (#{id,jdbcType=INTEGER}, #{signReportDate,jdbcType=TIMESTAMP}, #{signReportNum,jdbcType=VARCHAR}, 
+      #{signReportTitle,jdbcType=VARCHAR}, #{secretLevel,jdbcType=INTEGER}, #{signer,jdbcType=VARCHAR}, 
+      #{draftOffice,jdbcType=VARCHAR}, #{draftMan,jdbcType=VARCHAR}, #{sendOffice,jdbcType=VARCHAR}, 
+      #{state,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccid.official.dao.entity.po.GwSignReport" >
+    <!--          -->
+    insert into GW_SIGN_REPORT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="signReportDate != null" >
+        SIGN_REPORT_DATE,
+      </if>
+      <if test="signReportNum != null" >
+        SIGN_REPORT_NUM,
+      </if>
+      <if test="signReportTitle != null" >
+        SIGN_REPORT_TITLE,
+      </if>
+      <if test="secretLevel != null" >
+        SECRET_LEVEL,
+      </if>
+      <if test="signer != null" >
+        SIGNER,
+      </if>
+      <if test="draftOffice != null" >
+        DRAFT_OFFICE,
+      </if>
+      <if test="draftMan != null" >
+        DRAFT_MAN,
+      </if>
+      <if test="sendOffice != null" >
+        SEND_OFFICE,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="signReportDate != null" >
+        #{signReportDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signReportNum != null" >
+        #{signReportNum,jdbcType=VARCHAR},
+      </if>
+      <if test="signReportTitle != null" >
+        #{signReportTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="secretLevel != null" >
+        #{secretLevel,jdbcType=INTEGER},
+      </if>
+      <if test="signer != null" >
+        #{signer,jdbcType=VARCHAR},
+      </if>
+      <if test="draftOffice != null" >
+        #{draftOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="draftMan != null" >
+        #{draftMan,jdbcType=VARCHAR},
+      </if>
+      <if test="sendOffice != null" >
+        #{sendOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

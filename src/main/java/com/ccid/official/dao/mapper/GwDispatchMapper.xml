@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccid.official.dao.mapper.GwDispatchMapper" >
+  <resultMap id="BaseResultMap" type="com.ccid.official.dao.entity.po.GwDispatch" >
+    <!--          -->
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="DISPATCH_TYPE" property="dispatchType" jdbcType="VARCHAR" />
+    <result column="ORDER_NUM" property="orderNum" jdbcType="INTEGER" />
+    <result column="DISPATCH_DATE" property="dispatchDate" jdbcType="TIMESTAMP" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="DRAFT_OFFICE" property="draftOffice" jdbcType="INTEGER" />
+    <result column="SIGNER" property="signer" jdbcType="VARCHAR" />
+    <result column="DRAFT_MAN" property="draftMan" jdbcType="INTEGER" />
+    <result column="SENT_TO_UNIT" property="sentToUnit" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="DOCUMENT_NUM" property="documentNum" jdbcType="VARCHAR" />
+    <result column="SECRET_LEVEL" property="secretLevel" jdbcType="INTEGER" />
+    <result column="densification basis" property="densificationBasis" jdbcType="VARCHAR" />
+    <result column="SEND_OFFICE" property="sendOffice" jdbcType="VARCHAR" />
+    <result column="DISPATCH_PROPERTY" property="dispatchProperty" jdbcType="VARCHAR" />
+    <result column="COPIES_NUMBER" property="copiesNumber" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--          -->
+    ID, DISPATCH_TYPE, ORDER_NUM, DISPATCH_DATE, TITLE, DRAFT_OFFICE, SIGNER, DRAFT_MAN, 
+    SENT_TO_UNIT, STATE, DOCUMENT_NUM, SECRET_LEVEL, "densification basis", SEND_OFFICE, 
+    DISPATCH_PROPERTY, COPIES_NUMBER
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--          -->
+    select 
+    <include refid="Base_Column_List" />
+    from GW_DISPATCH
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--          -->
+    delete from GW_DISPATCH
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ccid.official.dao.entity.po.GwDispatch" >
+    <!--          -->
+    insert into GW_DISPATCH (ID, DISPATCH_TYPE, ORDER_NUM, 
+      DISPATCH_DATE, TITLE, DRAFT_OFFICE, 
+      SIGNER, DRAFT_MAN, SENT_TO_UNIT, 
+      STATE, DOCUMENT_NUM, SECRET_LEVEL, 
+      "densification basis", SEND_OFFICE, DISPATCH_PROPERTY, 
+      COPIES_NUMBER)
+    values (#{id,jdbcType=INTEGER}, #{dispatchType,jdbcType=VARCHAR}, #{orderNum,jdbcType=INTEGER}, 
+      #{dispatchDate,jdbcType=TIMESTAMP}, #{title,jdbcType=VARCHAR}, #{draftOffice,jdbcType=INTEGER}, 
+      #{signer,jdbcType=VARCHAR}, #{draftMan,jdbcType=INTEGER}, #{sentToUnit,jdbcType=VARCHAR}, 
+      #{state,jdbcType=INTEGER}, #{documentNum,jdbcType=VARCHAR}, #{secretLevel,jdbcType=INTEGER}, 
+      #{densificationBasis,jdbcType=VARCHAR}, #{sendOffice,jdbcType=VARCHAR}, #{dispatchProperty,jdbcType=VARCHAR}, 
+      #{copiesNumber,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccid.official.dao.entity.po.GwDispatch" >
+    <!--          -->
+    insert into GW_DISPATCH
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="dispatchType != null" >
+        DISPATCH_TYPE,
+      </if>
+      <if test="orderNum != null" >
+        ORDER_NUM,
+      </if>
+      <if test="dispatchDate != null" >
+        DISPATCH_DATE,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="draftOffice != null" >
+        DRAFT_OFFICE,
+      </if>
+      <if test="signer != null" >
+        SIGNER,
+      </if>
+      <if test="draftMan != null" >
+        DRAFT_MAN,
+      </if>
+      <if test="sentToUnit != null" >
+        SENT_TO_UNIT,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="documentNum != null" >
+        DOCUMENT_NUM,
+      </if>
+      <if test="secretLevel != null" >
+        SECRET_LEVEL,
+      </if>
+      <if test="densificationBasis != null" >
+        "densification basis",
+      </if>
+      <if test="sendOffice != null" >
+        SEND_OFFICE,
+      </if>
+      <if test="dispatchProperty != null" >
+        DISPATCH_PROPERTY,
+      </if>
+      <if test="copiesNumber != null" >
+        COPIES_NUMBER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="dispatchType != null" >
+        #{dispatchType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null" >
+        #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="dispatchDate != null" >
+        #{dispatchDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="draftOffice != null" >
+        #{draftOffice,jdbcType=INTEGER},
+      </if>
+      <if test="signer != null" >
+        #{signer,jdbcType=VARCHAR},
+      </if>
+      <if test="draftMan != null" >
+        #{draftMan,jdbcType=INTEGER},
+      </if>
+      <if test="sentToUnit != null" >
+        #{sentToUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="documentNum != null" >
+        #{documentNum,jdbcType=VARCHAR},
+      </if>
+      <if test="secretLevel != null" >
+        #{secretLevel,jdbcType=INTEGER},
+      </if>
+      <if test="densificationBasis != null" >
+        #{densificationBasis,jdbcType=VARCHAR},
+      </if>
+      <if test="sendOffice != null" >
+        #{sendOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchProperty != null" >
+        #{dispatchProperty,jdbcType=VARCHAR},
+      </if>
+      <if test="copiesNumber != null" >
+        #{copiesNumber,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccid.official.dao.entity.po.GwDispatch" >
+    <!--          -->
+    update GW_DISPATCH
+    <set >
+      <if test="dispatchType != null" >
+        DISPATCH_TYPE = #{dispatchType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null" >
+        ORDER_NUM = #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="dispatchDate != null" >
+        DISPATCH_DATE = #{dispatchDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="draftOffice != null" >
+        DRAFT_OFFICE = #{draftOffice,jdbcType=INTEGER},
+      </if>
+      <if test="signer != null" >
+        SIGNER = #{signer,jdbcType=VARCHAR},
+      </if>
+      <if test="draftMan != null" >
+        DRAFT_MAN = #{draftMan,jdbcType=INTEGER},
+      </if>
+      <if test="sentToUnit != null" >
+        SENT_TO_UNIT = #{sentToUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="documentNum != null" >
+        DOCUMENT_NUM = #{documentNum,jdbcType=VARCHAR},
+      </if>
+      <if test="secretLevel != null" >
+        SECRET_LEVEL = #{secretLevel,jdbcType=INTEGER},
+      </if>
+      <if test="densificationBasis != null" >
+        "densification basis" = #{densificationBasis,jdbcType=VARCHAR},
+      </if>
+      <if test="sendOffice != null" >
+        SEND_OFFICE = #{sendOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchProperty != null" >
+        DISPATCH_PROPERTY = #{dispatchProperty,jdbcType=VARCHAR},
+      </if>
+      <if test="copiesNumber != null" >
+        COPIES_NUMBER = #{copiesNumber,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccid.official.dao.entity.po.GwDispatch" >
+    <!--          -->
+    update GW_DISPATCH
+    set DISPATCH_TYPE = #{dispatchType,jdbcType=VARCHAR},
+      ORDER_NUM = #{orderNum,jdbcType=INTEGER},
+      DISPATCH_DATE = #{dispatchDate,jdbcType=TIMESTAMP},
+      TITLE = #{title,jdbcType=VARCHAR},
+      DRAFT_OFFICE = #{draftOffice,jdbcType=INTEGER},
+      SIGNER = #{signer,jdbcType=VARCHAR},
+      DRAFT_MAN = #{draftMan,jdbcType=INTEGER},
+      SENT_TO_UNIT = #{sentToUnit,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=INTEGER},
+      DOCUMENT_NUM = #{documentNum,jdbcType=VARCHAR},
+      SECRET_LEVEL = #{secretLevel,jdbcType=INTEGER},
+      "densification basis" = #{densificationBasis,jdbcType=VARCHAR},
+      SEND_OFFICE = #{sendOffice,jdbcType=VARCHAR},
+      DISPATCH_PROPERTY = #{dispatchProperty,jdbcType=VARCHAR},
+      COPIES_NUMBER = #{copiesNumber,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

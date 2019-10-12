@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccid.official.dao.mapper.GwReceiveMapper" >
+  <resultMap id="BaseResultMap" type="com.ccid.official.dao.entity.po.GwReceive" >
+    <!--          -->
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="RECEIVE_YEAR" property="receiveYear" jdbcType="TIMESTAMP" />
+    <result column="SERIAL_NUMBER" property="serialNumber" jdbcType="INTEGER" />
+    <result column="RECEIVE_ORIGIN" property="receiveOrigin" jdbcType="VARCHAR" />
+    <result column="RECEIVE_DATE" property="receiveDate" jdbcType="TIMESTAMP" />
+    <result column="RECEIVE_NUMBER" property="receiveNumber" jdbcType="VARCHAR" />
+    <result column="SECRET_LEVEL" property="secretLevel" jdbcType="INTEGER" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="COPIES_NUMBER" property="copiesNumber" jdbcType="INTEGER" />
+    <result column="ATTRIBUTE" property="attribute" jdbcType="VARCHAR" />
+    <result column="DESCRIBE" property="describe" jdbcType="VARCHAR" />
+    <result column="FEEDBACK_DATE" property="feedbackDate" jdbcType="TIMESTAMP" />
+    <result column="INSTRUCTOR" property="instructor" jdbcType="VARCHAR" />
+    <result column="INSTRUCTION_DATE" property="instructionDate" jdbcType="TIMESTAMP" />
+    <result column="INSTRUCTION_CONTENT" property="instructionContent" jdbcType="VARCHAR" />
+    <result column="OFFICE_ID" property="officeId" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--          -->
+    ID, RECEIVE_YEAR, SERIAL_NUMBER, RECEIVE_ORIGIN, RECEIVE_DATE, RECEIVE_NUMBER, SECRET_LEVEL, 
+    TITLE, COPIES_NUMBER, ATTRIBUTE, DESCRIBE, FEEDBACK_DATE, INSTRUCTOR, INSTRUCTION_DATE, 
+    INSTRUCTION_CONTENT, OFFICE_ID, STATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--          -->
+    select 
+    <include refid="Base_Column_List" />
+    from GW_RECEIVE
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--          -->
+    delete from GW_RECEIVE
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ccid.official.dao.entity.po.GwReceive" >
+    <!--          -->
+    insert into GW_RECEIVE (ID, RECEIVE_YEAR, SERIAL_NUMBER, 
+      RECEIVE_ORIGIN, RECEIVE_DATE, RECEIVE_NUMBER, 
+      SECRET_LEVEL, TITLE, COPIES_NUMBER, 
+      ATTRIBUTE, DESCRIBE, FEEDBACK_DATE, 
+      INSTRUCTOR, INSTRUCTION_DATE, INSTRUCTION_CONTENT, 
+      OFFICE_ID, STATE)
+    values (#{id,jdbcType=INTEGER}, #{receiveYear,jdbcType=TIMESTAMP}, #{serialNumber,jdbcType=INTEGER}, 
+      #{receiveOrigin,jdbcType=VARCHAR}, #{receiveDate,jdbcType=TIMESTAMP}, #{receiveNumber,jdbcType=VARCHAR}, 
+      #{secretLevel,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{copiesNumber,jdbcType=INTEGER}, 
+      #{attribute,jdbcType=VARCHAR}, #{describe,jdbcType=VARCHAR}, #{feedbackDate,jdbcType=TIMESTAMP}, 
+      #{instructor,jdbcType=VARCHAR}, #{instructionDate,jdbcType=TIMESTAMP}, #{instructionContent,jdbcType=VARCHAR}, 
+      #{officeId,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccid.official.dao.entity.po.GwReceive" >
+    <!--          -->
+    insert into GW_RECEIVE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="receiveYear != null" >
+        RECEIVE_YEAR,
+      </if>
+      <if test="serialNumber != null" >
+        SERIAL_NUMBER,
+      </if>
+      <if test="receiveOrigin != null" >
+        RECEIVE_ORIGIN,
+      </if>
+      <if test="receiveDate != null" >
+        RECEIVE_DATE,
+      </if>
+      <if test="receiveNumber != null" >
+        RECEIVE_NUMBER,
+      </if>
+      <if test="secretLevel != null" >
+        SECRET_LEVEL,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="copiesNumber != null" >
+        COPIES_NUMBER,
+      </if>
+      <if test="attribute != null" >
+        ATTRIBUTE,
+      </if>
+      <if test="describe != null" >
+        DESCRIBE,
+      </if>
+      <if test="feedbackDate != null" >
+        FEEDBACK_DATE,
+      </if>
+      <if test="instructor != null" >
+        INSTRUCTOR,
+      </if>
+      <if test="instructionDate != null" >
+        INSTRUCTION_DATE,
+      </if>
+      <if test="instructionContent != null" >
+        INSTRUCTION_CONTENT,
+      </if>
+      <if test="officeId != null" >
+        OFFICE_ID,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="receiveYear != null" >
+        #{receiveYear,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serialNumber != null" >
+        #{serialNumber,jdbcType=INTEGER},
+      </if>
+      <if test="receiveOrigin != null" >
+        #{receiveOrigin,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveDate != null" >
+        #{receiveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveNumber != null" >
+        #{receiveNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="secretLevel != null" >
+        #{secretLevel,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="copiesNumber != null" >
+        #{copiesNumber,jdbcType=INTEGER},
+      </if>
+      <if test="attribute != null" >
+        #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null" >
+        #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackDate != null" >
+        #{feedbackDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="instructor != null" >
+        #{instructor,jdbcType=VARCHAR},
+      </if>
+      <if test="instructionDate != null" >
+        #{instructionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="instructionContent != null" >
+        #{instructionContent,jdbcType=VARCHAR},
+      </if>
+      <if test="officeId != null" >
+        #{officeId,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccid.official.dao.entity.po.GwReceive" >
+    <!--          -->
+    update GW_RECEIVE
+    <set >
+      <if test="receiveYear != null" >
+        RECEIVE_YEAR = #{receiveYear,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serialNumber != null" >
+        SERIAL_NUMBER = #{serialNumber,jdbcType=INTEGER},
+      </if>
+      <if test="receiveOrigin != null" >
+        RECEIVE_ORIGIN = #{receiveOrigin,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveDate != null" >
+        RECEIVE_DATE = #{receiveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveNumber != null" >
+        RECEIVE_NUMBER = #{receiveNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="secretLevel != null" >
+        SECRET_LEVEL = #{secretLevel,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="copiesNumber != null" >
+        COPIES_NUMBER = #{copiesNumber,jdbcType=INTEGER},
+      </if>
+      <if test="attribute != null" >
+        ATTRIBUTE = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null" >
+        DESCRIBE = #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackDate != null" >
+        FEEDBACK_DATE = #{feedbackDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="instructor != null" >
+        INSTRUCTOR = #{instructor,jdbcType=VARCHAR},
+      </if>
+      <if test="instructionDate != null" >
+        INSTRUCTION_DATE = #{instructionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="instructionContent != null" >
+        INSTRUCTION_CONTENT = #{instructionContent,jdbcType=VARCHAR},
+      </if>
+      <if test="officeId != null" >
+        OFFICE_ID = #{officeId,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccid.official.dao.entity.po.GwReceive" >
+    <!--          -->
+    update GW_RECEIVE
+    set RECEIVE_YEAR = #{receiveYear,jdbcType=TIMESTAMP},
+      SERIAL_NUMBER = #{serialNumber,jdbcType=INTEGER},
+      RECEIVE_ORIGIN = #{receiveOrigin,jdbcType=VARCHAR},
+      RECEIVE_DATE = #{receiveDate,jdbcType=TIMESTAMP},
+      RECEIVE_NUMBER = #{receiveNumber,jdbcType=VARCHAR},
+      SECRET_LEVEL = #{secretLevel,jdbcType=INTEGER},
+      TITLE = #{title,jdbcType=VARCHAR},
+      COPIES_NUMBER = #{copiesNumber,jdbcType=INTEGER},
+      ATTRIBUTE = #{attribute,jdbcType=VARCHAR},
+      DESCRIBE = #{describe,jdbcType=VARCHAR},
+      FEEDBACK_DATE = #{feedbackDate,jdbcType=TIMESTAMP},
+      INSTRUCTOR = #{instructor,jdbcType=VARCHAR},
+      INSTRUCTION_DATE = #{instructionDate,jdbcType=TIMESTAMP},
+      INSTRUCTION_CONTENT = #{instructionContent,jdbcType=VARCHAR},
+      OFFICE_ID = #{officeId,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

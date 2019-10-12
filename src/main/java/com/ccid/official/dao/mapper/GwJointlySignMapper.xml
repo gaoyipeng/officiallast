@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccid.official.dao.mapper.GwJointlySignMapper" >
+  <resultMap id="BaseResultMap" type="com.ccid.official.dao.entity.po.GwJointlySign" >
+    <!--          -->
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="JOINTLY_SIGN_ORDER_NUM" property="jointlySignOrderNum" jdbcType="INTEGER" />
+    <result column="JOINTLY_SIGN_DATE" property="jointlySignDate" jdbcType="TIMESTAMP" />
+    <result column="RECEIVE_ORIGIN" property="receiveOrigin" jdbcType="VARCHAR" />
+    <result column="SECRET_LEVEL" property="secretLevel" jdbcType="INTEGER" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="COPIES_NUMBER" property="copiesNumber" jdbcType="INTEGER" />
+    <result column="UNDERTAKE_OFFICE" property="undertakeOffice" jdbcType="VARCHAR" />
+    <result column="INSTRUCTIONAL_STATUS" property="instructionalStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--          -->
+    ID, JOINTLY_SIGN_ORDER_NUM, JOINTLY_SIGN_DATE, RECEIVE_ORIGIN, SECRET_LEVEL, TITLE, 
+    COPIES_NUMBER, UNDERTAKE_OFFICE, INSTRUCTIONAL_STATUS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--          -->
+    select 
+    <include refid="Base_Column_List" />
+    from GW_JOINTLY_SIGN
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--          -->
+    delete from GW_JOINTLY_SIGN
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ccid.official.dao.entity.po.GwJointlySign" >
+    <!--          -->
+    insert into GW_JOINTLY_SIGN (ID, JOINTLY_SIGN_ORDER_NUM, JOINTLY_SIGN_DATE, 
+      RECEIVE_ORIGIN, SECRET_LEVEL, TITLE, 
+      COPIES_NUMBER, UNDERTAKE_OFFICE, INSTRUCTIONAL_STATUS
+      )
+    values (#{id,jdbcType=INTEGER}, #{jointlySignOrderNum,jdbcType=INTEGER}, #{jointlySignDate,jdbcType=TIMESTAMP}, 
+      #{receiveOrigin,jdbcType=VARCHAR}, #{secretLevel,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{copiesNumber,jdbcType=INTEGER}, #{undertakeOffice,jdbcType=VARCHAR}, #{instructionalStatus,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccid.official.dao.entity.po.GwJointlySign" >
+    <!--          -->
+    insert into GW_JOINTLY_SIGN
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="jointlySignOrderNum != null" >
+        JOINTLY_SIGN_ORDER_NUM,
+      </if>
+      <if test="jointlySignDate != null" >
+        JOINTLY_SIGN_DATE,
+      </if>
+      <if test="receiveOrigin != null" >
+        RECEIVE_ORIGIN,
+      </if>
+      <if test="secretLevel != null" >
+        SECRET_LEVEL,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="copiesNumber != null" >
+        COPIES_NUMBER,
+      </if>
+      <if test="undertakeOffice != null" >
+        UNDERTAKE_OFFICE,
+      </if>
+      <if test="instructionalStatus != null" >
+        INSTRUCTIONAL_STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="jointlySignOrderNum != null" >
+        #{jointlySignOrderNum,jdbcType=INTEGER},
+      </if>
+      <if test="jointlySignDate != null" >
+        #{jointlySignDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveOrigin != null" >
+        #{receiveOrigin,jdbcType=VARCHAR},
+      </if>
+      <if test="secretLevel != null" >
+        #{secretLevel,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="copiesNumber != null" >
+        #{copiesNumber,jdbcType=INTEGER},
+      </if>
+      <if test="undertakeOffice != null" >
+        #{undertakeOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="instructionalStatus != null" >
+        #{instructionalStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccid.official.dao.entity.po.GwJointlySign" >
+    <!--          -->
+    update GW_JOINTLY_SIGN
+    <set >
+      <if test="jointlySignOrderNum != null" >
+        JOINTLY_SIGN_ORDER_NUM = #{jointlySignOrderNum,jdbcType=INTEGER},
+      </if>
+      <if test="jointlySignDate != null" >
+        JOINTLY_SIGN_DATE = #{jointlySignDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveOrigin != null" >
+        RECEIVE_ORIGIN = #{receiveOrigin,jdbcType=VARCHAR},
+      </if>
+      <if test="secretLevel != null" >
+        SECRET_LEVEL = #{secretLevel,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="copiesNumber != null" >
+        COPIES_NUMBER = #{copiesNumber,jdbcType=INTEGER},
+      </if>
+      <if test="undertakeOffice != null" >
+        UNDERTAKE_OFFICE = #{undertakeOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="instructionalStatus != null" >
+        INSTRUCTIONAL_STATUS = #{instructionalStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccid.official.dao.entity.po.GwJointlySign" >
+    <!--          -->
+    update GW_JOINTLY_SIGN
+    set JOINTLY_SIGN_ORDER_NUM = #{jointlySignOrderNum,jdbcType=INTEGER},
+      JOINTLY_SIGN_DATE = #{jointlySignDate,jdbcType=TIMESTAMP},
+      RECEIVE_ORIGIN = #{receiveOrigin,jdbcType=VARCHAR},
+      SECRET_LEVEL = #{secretLevel,jdbcType=INTEGER},
+      TITLE = #{title,jdbcType=VARCHAR},
+      COPIES_NUMBER = #{copiesNumber,jdbcType=INTEGER},
+      UNDERTAKE_OFFICE = #{undertakeOffice,jdbcType=VARCHAR},
+      INSTRUCTIONAL_STATUS = #{instructionalStatus,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

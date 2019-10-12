@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccid.official.dao.mapper.GwMeetingActivityMapper" >
+  <resultMap id="BaseResultMap" type="com.ccid.official.dao.entity.po.GwMeetingActivity" >
+    <!--          -->
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="ACTIVITY_NAME" property="activityName" jdbcType="VARCHAR" />
+    <result column="ORGANIZERS" property="organizers" jdbcType="VARCHAR" />
+    <result column="ACTIVITY_TIME" property="activityTime" jdbcType="TIMESTAMP" />
+    <result column="REGISTRATION_TIME" property="registrationTime" jdbcType="TIMESTAMP" />
+    <result column="ACTIVITY_PLACE" property="activityPlace" jdbcType="VARCHAR" />
+    <result column="MEETING_PEOPLES" property="meetingPeoples" jdbcType="CHAR" />
+    <result column="ACCOMPANY_PEOPLES" property="accompanyPeoples" jdbcType="VARCHAR" />
+    <result column="REMARKS" property="remarks" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--          -->
+    ID, ACTIVITY_NAME, ORGANIZERS, ACTIVITY_TIME, REGISTRATION_TIME, ACTIVITY_PLACE, 
+    MEETING_PEOPLES, ACCOMPANY_PEOPLES, REMARKS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--          -->
+    select 
+    <include refid="Base_Column_List" />
+    from GW_MEETING_ACTIVITY
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--          -->
+    delete from GW_MEETING_ACTIVITY
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ccid.official.dao.entity.po.GwMeetingActivity" >
+    <!--          -->
+    insert into GW_MEETING_ACTIVITY (ID, ACTIVITY_NAME, ORGANIZERS, 
+      ACTIVITY_TIME, REGISTRATION_TIME, ACTIVITY_PLACE, 
+      MEETING_PEOPLES, ACCOMPANY_PEOPLES, REMARKS
+      )
+    values (#{id,jdbcType=INTEGER}, #{activityName,jdbcType=VARCHAR}, #{organizers,jdbcType=VARCHAR}, 
+      #{activityTime,jdbcType=TIMESTAMP}, #{registrationTime,jdbcType=TIMESTAMP}, #{activityPlace,jdbcType=VARCHAR}, 
+      #{meetingPeoples,jdbcType=CHAR}, #{accompanyPeoples,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccid.official.dao.entity.po.GwMeetingActivity" >
+    <!--          -->
+    insert into GW_MEETING_ACTIVITY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="activityName != null" >
+        ACTIVITY_NAME,
+      </if>
+      <if test="organizers != null" >
+        ORGANIZERS,
+      </if>
+      <if test="activityTime != null" >
+        ACTIVITY_TIME,
+      </if>
+      <if test="registrationTime != null" >
+        REGISTRATION_TIME,
+      </if>
+      <if test="activityPlace != null" >
+        ACTIVITY_PLACE,
+      </if>
+      <if test="meetingPeoples != null" >
+        MEETING_PEOPLES,
+      </if>
+      <if test="accompanyPeoples != null" >
+        ACCOMPANY_PEOPLES,
+      </if>
+      <if test="remarks != null" >
+        REMARKS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityName != null" >
+        #{activityName,jdbcType=VARCHAR},
+      </if>
+      <if test="organizers != null" >
+        #{organizers,jdbcType=VARCHAR},
+      </if>
+      <if test="activityTime != null" >
+        #{activityTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registrationTime != null" >
+        #{registrationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activityPlace != null" >
+        #{activityPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="meetingPeoples != null" >
+        #{meetingPeoples,jdbcType=CHAR},
+      </if>
+      <if test="accompanyPeoples != null" >
+        #{accompanyPeoples,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccid.official.dao.entity.po.GwMeetingActivity" >
+    <!--          -->
+    update GW_MEETING_ACTIVITY
+    <set >
+      <if test="activityName != null" >
+        ACTIVITY_NAME = #{activityName,jdbcType=VARCHAR},
+      </if>
+      <if test="organizers != null" >
+        ORGANIZERS = #{organizers,jdbcType=VARCHAR},
+      </if>
+      <if test="activityTime != null" >
+        ACTIVITY_TIME = #{activityTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registrationTime != null" >
+        REGISTRATION_TIME = #{registrationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activityPlace != null" >
+        ACTIVITY_PLACE = #{activityPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="meetingPeoples != null" >
+        MEETING_PEOPLES = #{meetingPeoples,jdbcType=CHAR},
+      </if>
+      <if test="accompanyPeoples != null" >
+        ACCOMPANY_PEOPLES = #{accompanyPeoples,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        REMARKS = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccid.official.dao.entity.po.GwMeetingActivity" >
+    <!--          -->
+    update GW_MEETING_ACTIVITY
+    set ACTIVITY_NAME = #{activityName,jdbcType=VARCHAR},
+      ORGANIZERS = #{organizers,jdbcType=VARCHAR},
+      ACTIVITY_TIME = #{activityTime,jdbcType=TIMESTAMP},
+      REGISTRATION_TIME = #{registrationTime,jdbcType=TIMESTAMP},
+      ACTIVITY_PLACE = #{activityPlace,jdbcType=VARCHAR},
+      MEETING_PEOPLES = #{meetingPeoples,jdbcType=CHAR},
+      ACCOMPANY_PEOPLES = #{accompanyPeoples,jdbcType=VARCHAR},
+      REMARKS = #{remarks,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
