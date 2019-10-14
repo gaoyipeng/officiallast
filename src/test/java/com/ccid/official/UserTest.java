@@ -7,7 +7,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
 public class UserTest {
-
     @Test
     public void userFindByIdTest(){
         SqlSession session = SessionFactorySingleton.getInstance().getSqlSessionFactory().openSession();
@@ -19,4 +18,6 @@ public class UserTest {
         //关闭session
         session.close();
     }
+
+
 }

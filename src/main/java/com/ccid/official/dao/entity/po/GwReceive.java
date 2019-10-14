@@ -30,10 +30,10 @@ public class GwReceive {
     /**   COPIES_NUMBER **/
     private Integer copiesNumber;
 
-    /**   ATTRIBUTE **/
+    /**   attribute **/
     private String attribute;
 
-    /**   DESCRIBE **/
+    /**   describe **/
     private String describe;
 
     /**   FEEDBACK_DATE **/
@@ -48,11 +48,14 @@ public class GwReceive {
     /**   INSTRUCTION_CONTENT **/
     private String instructionContent;
 
-    /**   OFFICE_ID **/
-    private String officeId;
+    /**   OFFICE **/
+    private String office;
 
     /**   STATE **/
     private String state;
+
+    /**   MEETING_ACTIVITY_ID **/
+    private Integer meetingActivityId;
 
     /**     ID   **/
     public Integer getId() {
@@ -144,22 +147,22 @@ public class GwReceive {
         this.copiesNumber = copiesNumber;
     }
 
-    /**     ATTRIBUTE   **/
+    /**     attribute   **/
     public String getAttribute() {
         return attribute;
     }
 
-    /**     ATTRIBUTE   **/
+    /**     attribute   **/
     public void setAttribute(String attribute) {
         this.attribute = attribute == null ? null : attribute.trim();
     }
 
-    /**     DESCRIBE   **/
+    /**     describe   **/
     public String getDescribe() {
         return describe;
     }
 
-    /**     DESCRIBE   **/
+    /**     describe   **/
     public void setDescribe(String describe) {
         this.describe = describe == null ? null : describe.trim();
     }
@@ -204,14 +207,14 @@ public class GwReceive {
         this.instructionContent = instructionContent == null ? null : instructionContent.trim();
     }
 
-    /**     OFFICE_ID   **/
-    public String getOfficeId() {
-        return officeId;
+    /**     OFFICE   **/
+    public String getOffice() {
+        return office;
     }
 
-    /**     OFFICE_ID   **/
-    public void setOfficeId(String officeId) {
-        this.officeId = officeId == null ? null : officeId.trim();
+    /**     OFFICE   **/
+    public void setOffice(String office) {
+        this.office = office == null ? null : office.trim();
     }
 
     /**     STATE   **/
@@ -222,5 +225,15 @@ public class GwReceive {
     /**     STATE   **/
     public void setState(String state) {
         this.state = state == null ? null : state.trim();
+    }
+
+    /**     MEETING_ACTIVITY_ID   **/
+    public Integer getMeetingActivityId() {
+        return meetingActivityId;
+    }
+
+    /**     MEETING_ACTIVITY_ID   **/
+    public void setMeetingActivityId(Integer meetingActivityId) {
+        this.meetingActivityId = meetingActivityId;
     }
 }

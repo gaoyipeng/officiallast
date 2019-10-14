@@ -12,26 +12,27 @@
     <result column="SECRET_LEVEL" property="secretLevel" jdbcType="INTEGER" />
     <result column="TITLE" property="title" jdbcType="VARCHAR" />
     <result column="COPIES_NUMBER" property="copiesNumber" jdbcType="INTEGER" />
-    <result column="ATTRIBUTE" property="attribute" jdbcType="VARCHAR" />
-    <result column="DESCRIBE" property="describe" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="describe" property="describe" jdbcType="VARCHAR" />
     <result column="FEEDBACK_DATE" property="feedbackDate" jdbcType="TIMESTAMP" />
     <result column="INSTRUCTOR" property="instructor" jdbcType="VARCHAR" />
     <result column="INSTRUCTION_DATE" property="instructionDate" jdbcType="TIMESTAMP" />
     <result column="INSTRUCTION_CONTENT" property="instructionContent" jdbcType="VARCHAR" />
-    <result column="OFFICE_ID" property="officeId" jdbcType="VARCHAR" />
+    <result column="OFFICE" property="office" jdbcType="VARCHAR" />
     <result column="STATE" property="state" jdbcType="VARCHAR" />
+    <result column="MEETING_ACTIVITY_ID" property="meetingActivityId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     <!--          -->
     ID, RECEIVE_YEAR, SERIAL_NUMBER, RECEIVE_ORIGIN, RECEIVE_DATE, RECEIVE_NUMBER, SECRET_LEVEL, 
-    TITLE, COPIES_NUMBER, ATTRIBUTE, DESCRIBE, FEEDBACK_DATE, INSTRUCTOR, INSTRUCTION_DATE, 
-    INSTRUCTION_CONTENT, OFFICE_ID, STATE
+    TITLE, COPIES_NUMBER, attribute, describe, FEEDBACK_DATE, INSTRUCTOR, INSTRUCTION_DATE, 
+    INSTRUCTION_CONTENT, OFFICE, STATE, MEETING_ACTIVITY_ID
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     <!--          -->
     select 
     <include refid="Base_Column_List" />
-    from GW_RECEIVE
+    from PUBLIC.GW_RECEIVE
     where ID = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
@@ -44,15 +45,17 @@
     insert into GW_RECEIVE (ID, RECEIVE_YEAR, SERIAL_NUMBER, 
       RECEIVE_ORIGIN, RECEIVE_DATE, RECEIVE_NUMBER, 
       SECRET_LEVEL, TITLE, COPIES_NUMBER, 
-      ATTRIBUTE, DESCRIBE, FEEDBACK_DATE, 
+      attribute, describe, FEEDBACK_DATE, 
       INSTRUCTOR, INSTRUCTION_DATE, INSTRUCTION_CONTENT, 
-      OFFICE_ID, STATE)
+      OFFICE, STATE, MEETING_ACTIVITY_ID
+      )
     values (#{id,jdbcType=INTEGER}, #{receiveYear,jdbcType=TIMESTAMP}, #{serialNumber,jdbcType=INTEGER}, 
       #{receiveOrigin,jdbcType=VARCHAR}, #{receiveDate,jdbcType=TIMESTAMP}, #{receiveNumber,jdbcType=VARCHAR}, 
       #{secretLevel,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{copiesNumber,jdbcType=INTEGER}, 
       #{attribute,jdbcType=VARCHAR}, #{describe,jdbcType=VARCHAR}, #{feedbackDate,jdbcType=TIMESTAMP}, 
       #{instructor,jdbcType=VARCHAR}, #{instructionDate,jdbcType=TIMESTAMP}, #{instructionContent,jdbcType=VARCHAR}, 
-      #{officeId,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR})
+      #{office,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{meetingActivityId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.ccid.official.dao.entity.po.GwReceive" >
     <!--          -->
@@ -86,10 +89,10 @@
         COPIES_NUMBER,
       </if>
       <if test="attribute != null" >
-        ATTRIBUTE,
+        attribute,
       </if>
       <if test="describe != null" >
-        DESCRIBE,
+        describe,
       </if>
       <if test="feedbackDate != null" >
         FEEDBACK_DATE,
@@ -103,11 +106,14 @@
       <if test="instructionContent != null" >
         INSTRUCTION_CONTENT,
       </if>
-      <if test="officeId != null" >
-        OFFICE_ID,
+      <if test="office != null" >
+        OFFICE,
       </if>
       <if test="state != null" >
         STATE,
+      </if>
+      <if test="meetingActivityId != null" >
+        MEETING_ACTIVITY_ID,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -156,11 +162,14 @@
       <if test="instructionContent != null" >
         #{instructionContent,jdbcType=VARCHAR},
       </if>
-      <if test="officeId != null" >
-        #{officeId,jdbcType=VARCHAR},
+      <if test="office != null" >
+        #{office,jdbcType=VARCHAR},
       </if>
       <if test="state != null" >
         #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="meetingActivityId != null" >
+        #{meetingActivityId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -193,10 +202,10 @@
         COPIES_NUMBER = #{copiesNumber,jdbcType=INTEGER},
       </if>
       <if test="attribute != null" >
-        ATTRIBUTE = #{attribute,jdbcType=VARCHAR},
+        attribute = #{attribute,jdbcType=VARCHAR},
       </if>
       <if test="describe != null" >
-        DESCRIBE = #{describe,jdbcType=VARCHAR},
+        describe = #{describe,jdbcType=VARCHAR},
       </if>
       <if test="feedbackDate != null" >
         FEEDBACK_DATE = #{feedbackDate,jdbcType=TIMESTAMP},
@@ -210,11 +219,14 @@
       <if test="instructionContent != null" >
         INSTRUCTION_CONTENT = #{instructionContent,jdbcType=VARCHAR},
       </if>
-      <if test="officeId != null" >
-        OFFICE_ID = #{officeId,jdbcType=VARCHAR},
+      <if test="office != null" >
+        OFFICE = #{office,jdbcType=VARCHAR},
       </if>
       <if test="state != null" >
         STATE = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="meetingActivityId != null" >
+        MEETING_ACTIVITY_ID = #{meetingActivityId,jdbcType=INTEGER},
       </if>
     </set>
     where ID = #{id,jdbcType=INTEGER}
@@ -230,14 +242,15 @@
       SECRET_LEVEL = #{secretLevel,jdbcType=INTEGER},
       TITLE = #{title,jdbcType=VARCHAR},
       COPIES_NUMBER = #{copiesNumber,jdbcType=INTEGER},
-      ATTRIBUTE = #{attribute,jdbcType=VARCHAR},
-      DESCRIBE = #{describe,jdbcType=VARCHAR},
+      attribute = #{attribute,jdbcType=VARCHAR},
+      describe = #{describe,jdbcType=VARCHAR},
       FEEDBACK_DATE = #{feedbackDate,jdbcType=TIMESTAMP},
       INSTRUCTOR = #{instructor,jdbcType=VARCHAR},
       INSTRUCTION_DATE = #{instructionDate,jdbcType=TIMESTAMP},
       INSTRUCTION_CONTENT = #{instructionContent,jdbcType=VARCHAR},
-      OFFICE_ID = #{officeId,jdbcType=VARCHAR},
-      STATE = #{state,jdbcType=VARCHAR}
+      OFFICE = #{office,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=VARCHAR},
+      MEETING_ACTIVITY_ID = #{meetingActivityId,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
